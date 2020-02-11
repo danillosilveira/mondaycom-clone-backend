@@ -40,4 +40,13 @@ export class RegisterReturnType {
   errorMessage: string;
 }
 
+@ObjectType()
+export class LoginReturnType {
+  @Field({ nullable: true })
+  token: Token;
+
+  @Field()
+  errorMessage: string;
+}
+
 export const UserModel = getModelForClass(User);

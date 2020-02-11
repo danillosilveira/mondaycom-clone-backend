@@ -65,5 +65,19 @@ RegisterReturnType = __decorate([
     type_graphql_1.ObjectType()
 ], RegisterReturnType);
 exports.RegisterReturnType = RegisterReturnType;
+let LoginReturnType = class LoginReturnType {
+};
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", Token_1.Token)
+], LoginReturnType.prototype, "token", void 0);
+__decorate([
+    type_graphql_1.Field(),
+    __metadata("design:type", String)
+], LoginReturnType.prototype, "errorMessage", void 0);
+LoginReturnType = __decorate([
+    type_graphql_1.ObjectType()
+], LoginReturnType);
+exports.LoginReturnType = LoginReturnType;
 exports.UserModel = typegoose_1.getModelForClass(User);
 //# sourceMappingURL=User.js.map
