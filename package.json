@@ -11,6 +11,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@typegoose/typegoose": "^6.3.2",
     "apollo-server-express": "^2.10.0",
     "bcrypt": "^3.0.8",
     "class-validator": "^0.11.0",
@@ -26,7 +27,6 @@
     "typegoose": "^5.9.1"
   },
   "devDependencies": {
-    "@typegoose/typegoose": "^6.3.2",
     "@types/bcrypt": "^3.0.0",
     "@types/cors": "^2.8.6",
     "@types/dotenv": "^8.2.0",
