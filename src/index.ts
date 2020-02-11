@@ -13,12 +13,6 @@ import { createSchema } from "./utils/createSchema";
 
   const app: express.Application = express();
 
-  app.use("/", (_: express.Request, res: express.Response) => {
-    res.json({
-      error: "You need to go to the /graphql route for graphql playground"
-    });
-  });
-
   const schema: GraphQLSchema = await createSchema();
 
   const server: ApolloServer = new ApolloServer({
