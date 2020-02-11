@@ -34,7 +34,7 @@ const createSchema_1 = require("./utils/createSchema");
         }
     });
     app.listen(process.env.PORT || 8080, () => {
-        console.log(`Server started on port ${process.env.PORT || 8080}`);
+        console.log(`Server started on portt ${process.env.PORT || 8080}`);
     });
 }))();
 //# sourceMappingURL=index.js.map
