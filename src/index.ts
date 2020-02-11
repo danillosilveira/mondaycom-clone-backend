@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import * as dotenv from "dotenv";
 import * as express from "express";
+import databaseConnection from "./helpers/dbConn";
 import { GraphQLSchema } from "graphql";
 import { ApolloServer } from "apollo-server-express";
 import { createSchema } from "./utils/createSchema";
@@ -8,7 +9,15 @@ import { createSchema } from "./utils/createSchema";
 (async () => {
   dotenv.config();
 
+  databaseConnection({ db: process.env.DB_STRING as string });
+
   const app: express.Application = express();
+
+  app.use("/", (_: express.Request, res: express.Response) => {
+    res.json({
+      error: "You need to go to the /graphql route for graphql playground"
+    });
+  });
 
   const schema: GraphQLSchema = await createSchema();
 

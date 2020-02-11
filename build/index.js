@@ -12,11 +12,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const dotenv = require("dotenv");
 const express = require("express");
+const dbConn_1 = require("./helpers/dbConn");
 const apollo_server_express_1 = require("apollo-server-express");
 const createSchema_1 = require("./utils/createSchema");
 (() => __awaiter(void 0, void 0, void 0, function* () {
     dotenv.config();
+    dbConn_1.default({ db: process.env.DB_STRING });
     const app = express();
+    app.use("/", (_, res) => {
+        res.json({
+            error: "You need to go to the /graphql route for graphql playground"
+        });
+    });
     const schema = yield createSchema_1.createSchema();
     const server = new apollo_server_express_1.ApolloServer({
         schema,
