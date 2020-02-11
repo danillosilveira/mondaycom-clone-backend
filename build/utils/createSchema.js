@@ -10,11 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const type_graphql_1 = require("type-graphql");
-const Query_1 = require("./graphql/user/Query");
+const Query_1 = require("../graphql/user/Query");
+const Register_1 = require("../graphql/user/Register");
 exports.createSchema = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const schema = yield type_graphql_1.buildSchema({
-            resolvers: [Query_1.QueryResolver]
+            resolvers: [Query_1.QueryResolver, Register_1.RegisterResolver]
         });
         return schema;
     }

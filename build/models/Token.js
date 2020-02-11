@@ -13,7 +13,7 @@ const type_graphql_1 = require("type-graphql");
 let Token = class Token {
 };
 __decorate([
-    type_graphql_1.Field({ nullable: false }),
+    type_graphql_1.Field({ nullable: true }),
     __metadata("design:type", String)
 ], Token.prototype, "token", void 0);
 Token = __decorate([
