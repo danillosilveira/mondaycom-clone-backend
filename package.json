@@ -5,6 +5,11 @@
   "repository": "https://github.com/berkaycimsir/mondaycom-clone-backend.git",
   "author": "berkaycimsir <berkayyoscimsir2003@hotmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start:dev": "nodemon --exec ts-node src/index.ts",
+    "start": "node ./build/index.js",
+    "build": "tsc"
+  },
   "dependencies": {
     "apollo-server-express": "^2.10.0",
     "bcrypt": "^3.0.8",
@@ -28,6 +33,7 @@
     "@types/graphql": "^14.5.0",
     "@types/jsonwebtoken": "^8.3.7",
     "@types/mongoose": "^5.7.1",
-    "@types/node": "^13.7.0"
+    "@types/node": "^13.7.0",
+    "typescript": "^3.7.5"
   }
 }

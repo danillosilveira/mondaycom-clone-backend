@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - 11
+before_install:
+  - yarn
+  - export NODE_ENV=production
+script:
+  - yarn build
