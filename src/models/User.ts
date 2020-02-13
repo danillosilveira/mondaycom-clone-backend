@@ -9,15 +9,7 @@ export class User {
 
   @Field()
   @prop({ required: true, type: String })
-  public name?: string;
-
-  @Field()
-  @prop({ required: true, type: String })
-  public surname?: string;
-
-  @Field()
-  @prop({ unique: true, required: true, type: String })
-  public username?: string;
+  public fullName?: string;
 
   @Field()
   @prop({ unique: true, required: true, type: String })
@@ -25,6 +17,9 @@ export class User {
 
   @prop({ required: true, type: String, minlength: 6 })
   public password?: string;
+
+  @prop({ required: true, type: String })
+  public teamName?: string;
 
   @Field()
   @prop({ default: Date.now(), type: Date })

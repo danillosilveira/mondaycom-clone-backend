@@ -10,13 +10,11 @@ export class RegisterResolver {
   @Mutation(() => RegisterReturnType, { nullable: true })
   async register(
     @Arg("data")
-    { name, surname, username, email, password }: RegisterInput
+    { fullName, email, password, teamName }: RegisterInput
   ): Promise<ReturnType> {
-    const userBoth: User | null = await UserModel.findOne({ email, username });
     const userEmail: User | null = await UserModel.findOne({ email });
-    const userUsername: User | null = await UserModel.findOne({ username });
 
-    if (userBoth) {
+    if (userEmail) {
       return {
         token: {
           token: null!
@@ -25,32 +23,13 @@ export class RegisterResolver {
       };
     }
 
-    if (userEmail) {
-      return {
-        token: {
-          token: null!
-        },
-        errorMessage: "Email already used."
-      };
-    }
-
-    if (userUsername) {
-      return {
-        token: {
-          token: null!
-        },
-        errorMessage: "Username already exists"
-      };
-    }
-
     const hashedPassword: string = await bcrypt.hash(password, 12);
 
     const newUser = await UserModel.create({
-      name,
-      surname,
-      username,
+      fullName,
       email,
       password: hashedPassword,
+      teamName,
       createdAt: Date.now()
     });
 

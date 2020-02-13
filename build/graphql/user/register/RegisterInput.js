@@ -17,17 +17,7 @@ __decorate([
     type_graphql_1.Field(),
     class_validator_1.Length(1, 255, { message: "Length must be 1-255" }),
     __metadata("design:type", String)
-], RegisterInput.prototype, "name", void 0);
-__decorate([
-    type_graphql_1.Field(),
-    class_validator_1.Length(1, 255),
-    __metadata("design:type", String)
-], RegisterInput.prototype, "surname", void 0);
-__decorate([
-    type_graphql_1.Field(),
-    class_validator_1.Length(1, 255),
-    __metadata("design:type", String)
-], RegisterInput.prototype, "username", void 0);
+], RegisterInput.prototype, "fullName", void 0);
 __decorate([
     type_graphql_1.Field(),
     __metadata("design:type", String)
@@ -37,6 +27,10 @@ __decorate([
     class_validator_1.MinLength(8),
     __metadata("design:type", String)
 ], RegisterInput.prototype, "password", void 0);
+__decorate([
+    type_graphql_1.Field(),
+    __metadata("design:type", String)
+], RegisterInput.prototype, "teamName", void 0);
 RegisterInput = __decorate([
     type_graphql_1.InputType()
 ], RegisterInput);

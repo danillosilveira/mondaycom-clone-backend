@@ -27,12 +27,10 @@ const type_graphql_1 = require("type-graphql");
 const bcrypt = require("bcrypt");
 const token_1 = require("../../helpers/token");
 let RegisterResolver = class RegisterResolver {
-    register({ name, surname, username, email, password }) {
+    register({ fullName, email, password, teamName }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userBoth = yield User_1.UserModel.findOne({ email, username });
             const userEmail = yield User_1.UserModel.findOne({ email });
-            const userUsername = yield User_1.UserModel.findOne({ username });
-            if (userBoth) {
+            if (userEmail) {
                 return {
                     token: {
                         token: null
@@ -40,29 +38,12 @@ let RegisterResolver = class RegisterResolver {
                     errorMessage: "User already exists"
                 };
             }
-            if (userEmail) {
-                return {
-                    token: {
-                        token: null
-                    },
-                    errorMessage: "Email already used."
-                };
-            }
-            if (userUsername) {
-                return {
-                    token: {
-                        token: null
-                    },
-                    errorMessage: "Username already exists"
-                };
-            }
             const hashedPassword = yield bcrypt.hash(password, 12);
             const newUser = yield User_1.UserModel.create({
-                name,
-                surname,
-                username,
+                fullName,
                 email,
                 password: hashedPassword,
+                teamName,
                 createdAt: Date.now()
             });
             return {

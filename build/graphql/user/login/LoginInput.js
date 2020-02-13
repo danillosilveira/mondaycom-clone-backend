@@ -10,14 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const type_graphql_1 = require("type-graphql");
-const class_validator_1 = require("class-validator");
 let LoginInput = class LoginInput {
 };
 __decorate([
     type_graphql_1.Field(),
-    class_validator_1.Length(1, 255),
     __metadata("design:type", String)
-], LoginInput.prototype, "username", void 0);
+], LoginInput.prototype, "email", void 0);
 __decorate([
     type_graphql_1.Field(),
     __metadata("design:type", String)

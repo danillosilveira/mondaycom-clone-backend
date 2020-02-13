@@ -28,9 +28,9 @@ const User_1 = require("./../../models/User");
 const type_graphql_1 = require("type-graphql");
 const bcrypt = require("bcrypt");
 let LoginResolver = class LoginResolver {
-    login({ username, password }) {
+    login({ email, password }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield User_1.UserModel.findOne({ username });
+            const user = yield User_1.UserModel.findOne({ email });
             if (!user) {
                 return {
                     token: {

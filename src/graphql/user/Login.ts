@@ -11,9 +11,9 @@ export class LoginResolver {
   @Mutation(() => LoginReturnType, { nullable: true })
   async login(
     @Arg("data")
-    { username, password }: LoginInput
+    { email, password }: LoginInput
   ): Promise<ReturnType> {
-    const user: User | null = await UserModel.findOne({ username });
+    const user: User | null = await UserModel.findOne({ email });
 
     if (!user) {
       return {
