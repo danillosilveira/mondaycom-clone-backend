@@ -21,11 +21,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const User_1 = require("./../../models/User");
 const type_graphql_1 = require("type-graphql");
 let QueryResolver = class QueryResolver {
     hello(name) {
         return __awaiter(this, void 0, void 0, function* () {
             return `Hello ${name}`;
+        });
+    }
+    activeUser(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const user = yield User_1.UserModel.findById(id);
+            if (!user) {
+                return {
+                    user: null,
+                    errorMessage: "User does not exists"
+                };
+            }
+            return {
+                user,
+                errorMessage: "No error."
+            };
         });
     }
 };
@@ -36,6 +52,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], QueryResolver.prototype, "hello", null);
+__decorate([
+    type_graphql_1.Query(() => User_1.ActiveUserReturnType, { nullable: true }),
+    __param(0, type_graphql_1.Arg("id")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], QueryResolver.prototype, "activeUser", null);
 QueryResolver = __decorate([
     type_graphql_1.Resolver()
 ], QueryResolver);

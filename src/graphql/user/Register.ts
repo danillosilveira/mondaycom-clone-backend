@@ -3,7 +3,6 @@ import { UserModel, User, RegisterReturnType } from "./../../models/User";
 import { Resolver, Mutation, Arg } from "type-graphql";
 import { ReturnType } from "./register/RegisterReturnType";
 import * as bcrypt from "bcrypt";
-import { token } from "../../helpers/token";
 
 @Resolver()
 export class RegisterResolver {
@@ -16,9 +15,7 @@ export class RegisterResolver {
 
     if (userEmail) {
       return {
-        token: {
-          token: null!
-        },
+        user: null!,
         errorMessage: "User already exists"
       };
     }
@@ -34,9 +31,7 @@ export class RegisterResolver {
     });
 
     return {
-      token: {
-        token: token.generate(newUser, "12h")
-      },
+      user: newUser,
       errorMessage: "No error."
     };
   }

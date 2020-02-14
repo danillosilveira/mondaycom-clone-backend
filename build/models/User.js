@@ -9,7 +9,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const Token_1 = require("./Token");
 const typegoose_1 = require("@typegoose/typegoose");
 const type_graphql_1 = require("type-graphql");
 let User = class User {
@@ -49,8 +48,8 @@ let RegisterReturnType = class RegisterReturnType {
 };
 __decorate([
     type_graphql_1.Field({ nullable: true }),
-    __metadata("design:type", Token_1.Token)
-], RegisterReturnType.prototype, "token", void 0);
+    __metadata("design:type", User)
+], RegisterReturnType.prototype, "user", void 0);
 __decorate([
     type_graphql_1.Field(),
     __metadata("design:type", String)
@@ -63,8 +62,8 @@ let LoginReturnType = class LoginReturnType {
 };
 __decorate([
     type_graphql_1.Field({ nullable: true }),
-    __metadata("design:type", Token_1.Token)
-], LoginReturnType.prototype, "token", void 0);
+    __metadata("design:type", User)
+], LoginReturnType.prototype, "user", void 0);
 __decorate([
     type_graphql_1.Field(),
     __metadata("design:type", String)
@@ -73,5 +72,19 @@ LoginReturnType = __decorate([
     type_graphql_1.ObjectType()
 ], LoginReturnType);
 exports.LoginReturnType = LoginReturnType;
+let ActiveUserReturnType = class ActiveUserReturnType {
+};
+__decorate([
+    type_graphql_1.Field({ nullable: true }),
+    __metadata("design:type", User)
+], ActiveUserReturnType.prototype, "user", void 0);
+__decorate([
+    type_graphql_1.Field(),
+    __metadata("design:type", String)
+], ActiveUserReturnType.prototype, "errorMessage", void 0);
+ActiveUserReturnType = __decorate([
+    type_graphql_1.ObjectType()
+], ActiveUserReturnType);
+exports.ActiveUserReturnType = ActiveUserReturnType;
 exports.UserModel = typegoose_1.getModelForClass(User);
 //# sourceMappingURL=User.js.map

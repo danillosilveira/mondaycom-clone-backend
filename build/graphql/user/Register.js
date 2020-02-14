@@ -25,16 +25,13 @@ const RegisterInput_1 = require("./register/RegisterInput");
 const User_1 = require("./../../models/User");
 const type_graphql_1 = require("type-graphql");
 const bcrypt = require("bcrypt");
-const token_1 = require("../../helpers/token");
 let RegisterResolver = class RegisterResolver {
     register({ fullName, email, password, teamName }) {
         return __awaiter(this, void 0, void 0, function* () {
             const userEmail = yield User_1.UserModel.findOne({ email });
             if (userEmail) {
                 return {
-                    token: {
-                        token: null
-                    },
+                    user: null,
                     errorMessage: "User already exists"
                 };
             }
@@ -47,9 +44,7 @@ let RegisterResolver = class RegisterResolver {
                 createdAt: Date.now()
             });
             return {
-                token: {
-                    token: token_1.token.generate(newUser, "12h")
-                },
+                user: newUser,
                 errorMessage: "No error."
             };
         });

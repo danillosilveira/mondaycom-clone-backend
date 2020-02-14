@@ -21,7 +21,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const token_1 = require("./../../helpers/token");
 require("reflect-metadata");
 const LoginInput_1 = require("./login/LoginInput");
 const User_1 = require("./../../models/User");
@@ -33,25 +32,19 @@ let LoginResolver = class LoginResolver {
             const user = yield User_1.UserModel.findOne({ email });
             if (!user) {
                 return {
-                    token: {
-                        token: null
-                    },
+                    user: null,
                     errorMessage: "User does not exists."
                 };
             }
             const validPassword = yield bcrypt.compare(password, user.password);
             if (!validPassword) {
                 return {
-                    token: {
-                        token: null
-                    },
+                    user: null,
                     errorMessage: "Password does not match."
                 };
             }
             return {
-                token: {
-                    token: token_1.token.generate(user, "12h")
-                },
+                user,
                 errorMessage: "No error."
             };
         });

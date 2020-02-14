@@ -1,4 +1,3 @@
-import { Token } from "./Token";
 import { prop, getModelForClass } from "@typegoose/typegoose";
 import { ObjectType, Field, ID } from "type-graphql";
 
@@ -29,7 +28,7 @@ export class User {
 @ObjectType()
 export class RegisterReturnType {
   @Field({ nullable: true })
-  token: Token;
+  user: User;
 
   @Field()
   errorMessage: string;
@@ -38,7 +37,16 @@ export class RegisterReturnType {
 @ObjectType()
 export class LoginReturnType {
   @Field({ nullable: true })
-  token: Token;
+  user: User;
+
+  @Field()
+  errorMessage: string;
+}
+
+@ObjectType()
+export class ActiveUserReturnType {
+  @Field({ nullable: true })
+  user: User;
 
   @Field()
   errorMessage: string;

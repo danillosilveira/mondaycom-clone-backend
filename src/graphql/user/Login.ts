@@ -1,4 +1,3 @@
-import { token } from "./../../helpers/token";
 import "reflect-metadata";
 import { LoginInput } from "./login/LoginInput";
 import { UserModel, User, LoginReturnType } from "./../../models/User";
@@ -17,9 +16,7 @@ export class LoginResolver {
 
     if (!user) {
       return {
-        token: {
-          token: null!
-        },
+        user: null!,
         errorMessage: "User does not exists."
       };
     }
@@ -31,17 +28,13 @@ export class LoginResolver {
 
     if (!validPassword) {
       return {
-        token: {
-          token: null!
-        },
+        user: null!,
         errorMessage: "Password does not match."
       };
     }
 
     return {
-      token: {
-        token: token.generate(user, "12h")
-      },
+      user,
       errorMessage: "No error."
     };
   }

@@ -1,6 +1,6 @@
-import { Token } from "../../../models/Token";
+import { User } from "./../../../models/User";
 
 export interface ReturnType {
-  token: Token;
+  user: User;
   errorMessage: string;
 }
