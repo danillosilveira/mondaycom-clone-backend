@@ -10,7 +10,16 @@ export class QueryResolver {
   }
 
   @Query(() => ActiveUserReturnType, { nullable: true })
-  async activeUser(@Arg("id") id: string): Promise<ReturnType> {
+  async activeUser(
+    @Arg("id", { nullable: true }) id: string
+  ): Promise<ReturnType> {
+    if (id === null || id === undefined) {
+      return {
+        user: null!,
+        errorMessage: "No Active User"
+      };
+    }
+
     const user = await UserModel.findById(id);
 
     if (!user) {

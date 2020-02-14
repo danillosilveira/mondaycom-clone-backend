@@ -31,6 +31,12 @@ let QueryResolver = class QueryResolver {
     }
     activeUser(id) {
         return __awaiter(this, void 0, void 0, function* () {
+            if (id === null || id === undefined) {
+                return {
+                    user: null,
+                    errorMessage: "No Active User"
+                };
+            }
             const user = yield User_1.UserModel.findById(id);
             if (!user) {
                 return {
@@ -54,7 +60,7 @@ __decorate([
 ], QueryResolver.prototype, "hello", null);
 __decorate([
     type_graphql_1.Query(() => User_1.ActiveUserReturnType, { nullable: true }),
-    __param(0, type_graphql_1.Arg("id")),
+    __param(0, type_graphql_1.Arg("id", { nullable: true })),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
