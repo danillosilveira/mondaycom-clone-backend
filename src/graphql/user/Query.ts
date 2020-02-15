@@ -1,6 +1,6 @@
 import { ActiveUserReturnType, UserModel } from "./../../models/User";
 import { Query, Resolver, Arg } from "type-graphql";
-import { ReturnType } from "../query/ActiveUserReturnType";
+import { ReturnType } from "./query/ActiveUserReturnType";
 
 @Resolver()
 export class QueryResolver {

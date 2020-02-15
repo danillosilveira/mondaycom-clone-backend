@@ -32,6 +32,7 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
+    type_graphql_1.Field(),
     typegoose_1.prop({ required: true, type: String }),
     __metadata("design:type", String)
 ], User.prototype, "teamName", void 0);

@@ -17,6 +17,7 @@ export class User {
   @prop({ required: true, type: String, minlength: 6 })
   public password?: string;
 
+  @Field()
   @prop({ required: true, type: String })
   public teamName?: string;
 
